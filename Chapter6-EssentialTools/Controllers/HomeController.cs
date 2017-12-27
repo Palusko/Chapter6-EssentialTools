@@ -28,7 +28,7 @@ namespace Chapter6_EssentialTools.Controllers
                     Price = 34.95m }
     };
 
-    public HomeController(IValueCalculator calcParam)
+    public HomeController(IValueCalculator calcParam, IValueCalculator calc2)
     {
       calc = calcParam;
     }
@@ -36,10 +36,10 @@ namespace Chapter6_EssentialTools.Controllers
     // GET: Home
     public ActionResult Index()
     {
-      var ninjectKernel = new StandardKernel();
-      ninjectKernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
+      //var ninjectKernel = new StandardKernel();
+      //ninjectKernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
 
-      IValueCalculator calc = ninjectKernel.Get<IValueCalculator>(); 
+     // IValueCalculator calc = ninjectKernel.Get<IValueCalculator>(); 
 
       var cart = new ShoppingCart(calc) { Products = products }; //this is the equivalent of the two lines below
       //var cart = new ShoppingCart(calc);
